@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chef Marc Buenaventura — Filipino-Canadian Chef, Co-Founder, Speaker</title>
+  <meta name="description" content="Chef Marc Buenaventura — Filipino-Canadian chef, co-founder of iSLAS Filipino BBQ & Bar and Islas Tech. Available for events, pop-ups, speaking engagements, and collaborations. Red Seal Cook (Ontario) preparing application.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1410;
+      --forest: #2d1f18;
+      --forest-mid: #4a3425;
+      --gold: #d4a574;
+      --gold-light: #e8b88a;
+      --gold-dim: rgba(212,165,116,0.15);
+      --cream: #f5f1ea;
+      --mist: #a89878;
+      --mist-dim: rgba(168,152,120,0.4);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--ink); color: var(--cream); overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 999;
+    }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 22px 52px; transition: all 0.4s; }
+    nav.scrolled { background: rgba(10,22,20,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--gold-dim); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; letter-spacing: 0.1em; color: var(--cream); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-link { font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); text-decoration: none; transition: color 0.2s; }
+    .nav-link:hover { color: var(--gold); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 10px 20px; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* HERO */
+    .hero { min-height: 92vh; display: flex; align-items: center; padding: 160px 52px 100px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 100% 80% at 30% 60%, rgba(74,52,37,0.5) 0%, var(--ink) 65%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,151,62,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,151,62,0.04) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3) 40%, transparent); }
+    .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: center; }
+    .hero-text { max-width: 720px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s 0.2s forwards; }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(46px, 6.2vw, 78px); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-roles { font-size: 13px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.9s 0.55s forwards; }
+    .hero-sub { font-size: 18px; font-weight: 300; color: var(--mist); line-height: 1.7; margin-bottom: 40px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
+    .hero-sub strong { color: var(--cream); font-weight: 400; }
+    .hero-actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.9s 0.85s forwards; }
+    .hero-portrait { width: 340px; aspect-ratio: 3/4; border: 1px solid var(--gold-dim); overflow: hidden; position: relative; opacity: 0; animation: fadeUp 0.9s 0.5s forwards; }
+    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .hero-portrait::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(10,22,20,0.4) 100%); pointer-events: none; }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--ink); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; padding: 16px 32px; border-radius: 2px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 12px 40px rgba(200,151,62,0.35); }
+    .btn-primary svg { transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(4px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 8px; color: var(--cream); font-size: 14px; font-weight: 400; text-decoration: none; border-bottom: 1px solid var(--gold-dim); padding-bottom: 4px; transition: all 0.2s; }
+    .btn-text:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* SECTION SHARED */
+    .section-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.1; color: var(--cream); margin-bottom: 24px; }
+    h2 em { font-style: italic; color: var(--gold-light); }
+
+    /* ABOUT */
+    .about-section { padding: 120px 52px; max-width: 980px; margin: 0 auto; }
+    .about-section p { font-size: 17px; font-weight: 300; line-height: 1.82; color: var(--mist); margin-bottom: 20px; }
+    .about-section p strong { color: var(--cream); font-weight: 400; }
+    .pull-quote { border-left: 2px solid var(--gold); padding: 22px 28px; margin: 36px 0; background: rgba(200,151,62,0.04); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 23px; font-weight: 300; font-style: italic; color: var(--cream); line-height: 1.5; margin: 0; }
+
+    /* RED SEAL */
+    .redseal-section { background: var(--forest); padding: 120px 52px; }
+    .redseal-inner { max-width: 1100px; margin: 0 auto; }
+    .redseal-header { max-width: 720px; margin-bottom: 56px; }
+    .redseal-header p { font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--mist); margin-top: 16px; }
+    .redseal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .redseal-status { background: rgba(10,22,20,0.6); padding: 36px; border: 1px solid var(--gold-dim); }
+    .redseal-status h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
+    .status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid var(--gold-dim); border-radius: 100px; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .status-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .redseal-status-list { display: flex; flex-direction: column; gap: 18px; margin-top: 20px; }
+    .status-row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--gold-dim); }
+    .status-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .status-row .label { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); padding-top: 2px; }
+    .status-row .value { font-size: 14px; color: var(--cream); line-height: 1.5; }
+    .redseal-explain p { font-size: 15px; font-weight: 300; line-height: 1.75; color: var(--mist); margin-bottom: 16px; }
+    .redseal-explain strong { color: var(--cream); font-weight: 400; }
+    .redseal-explain a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); transition: border-color 0.2s; }
+    .redseal-explain a:hover { border-bottom-color: var(--gold); }
+
+    /* EXPERIENCE */
+    .experience-section { padding: 120px 52px; max-width: 1200px; margin: 0 auto; }
+    .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+    .exp-card { background: rgba(255,255,255,0.02); padding: 36px 32px; border-top: 2px solid transparent; transition: all 0.3s; }
+    .exp-card:hover { border-top-color: var(--gold); background: rgba(200,151,62,0.04); }
+    .exp-period { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .exp-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 6px; line-height: 1.3; }
+    .exp-role { font-size: 12px; color: var(--mist-dim); letter-spacing: 0.04em; margin-bottom: 16px; }
+    .exp-card p { font-size: 14px; font-weight: 300; color: var(--mist); line-height: 1.7; }
+    .exp-card strong { color: var(--cream); font-weight: 400; }
+
+    /* SPEAKING TOPICS */
+    .topics-section { background: var(--forest); padding: 120px 52px; }
+    .topics-inner { max-width: 1200px; margin: 0 auto; }
+    .topics-intro { max-width: 720px; margin-bottom: 56px; }
+    .topics-intro p { font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--mist); margin-top: 16px; }
+    .topics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+    .topic-card { background: rgba(10,22,20,0.6); padding: 40px; border-left: 2px solid transparent; transition: all 0.3s; }
+    .topic-card:hover { border-left-color: var(--gold); background: rgba(10,22,20,0.9); }
+    .topic-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--cream); margin-bottom: 12px; line-height: 1.25; }
+    .topic-card h3 em { font-style: italic; color: var(--gold-light); }
+    .topic-card p { font-size: 14px; font-weight: 300; color: var(--mist); line-height: 1.75; }
+
+    /* EVENTS */
+    .events-section { padding: 120px 52px; max-width: 980px; margin: 0 auto; text-align: center; }
+    .events-inner h2 { margin-bottom: 24px; }
+    .events-inner p { font-size: 18px; font-weight: 300; line-height: 1.75; color: var(--mist); margin-bottom: 20px; }
+    .events-inner p strong { color: var(--cream); font-weight: 400; }
+    .events-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 48px 0; }
+    .event-type { background: rgba(255,255,255,0.02); padding: 32px 24px; border-top: 2px solid transparent; transition: all 0.3s; }
+    .event-type:hover { border-top-color: var(--gold); background: rgba(200,151,62,0.04); }
+    .event-type h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--cream); margin-bottom: 10px; }
+    .event-type p { font-size: 13px; font-weight: 300; color: var(--mist); line-height: 1.6; margin: 0; }
+
+    /* COLLABORATIONS */
+    .collab-section { background: var(--forest); padding: 100px 52px; }
+    .collab-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .collab-text p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--mist); margin-bottom: 18px; }
+    .collab-text strong { color: var(--cream); font-weight: 400; }
+    .collab-list { display: flex; flex-direction: column; gap: 2px; }
+    .collab-item { padding: 22px 26px; background: rgba(10,22,20,0.6); border-left: 2px solid transparent; transition: all 0.3s; }
+    .collab-item:hover { border-left-color: var(--gold); background: rgba(10,22,20,0.9); }
+    .collab-item h4 { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
+    .collab-item p { font-size: 13px; font-weight: 300; color: var(--mist); line-height: 1.55; margin: 0; }
+
+    /* MEDIA */
+    .media-section { padding: 120px 52px; max-width: 1200px; margin: 0 auto; }
+    .media-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+    .media-card { background: rgba(255,255,255,0.02); padding: 28px 26px; border-top: 2px solid transparent; transition: all 0.3s; }
+    .media-card:hover { border-top-color: var(--gold); background: rgba(200,151,62,0.04); }
+    .media-source { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .media-card .title { font-size: 14px; font-weight: 400; color: var(--cream); line-height: 1.5; }
+
+    /* BOOK */
+    .book-section { background: var(--forest); padding: 120px 52px; border-top: 1px solid var(--gold-dim); }
+    .book-inner { max-width: 980px; margin: 0 auto; }
+    .book-section p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--mist); margin-bottom: 18px; }
+    .book-section strong { color: var(--cream); font-weight: 400; }
+    .book-meta { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid var(--gold-dim); border-radius: 100px; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 24px; }
+    .book-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+    /* CONTACT */
+    .contact-section { padding: 120px 52px; text-align: center; }
+    .contact-inner { max-width: 720px; margin: 0 auto; }
+    .contact-inner h2 { margin-bottom: 24px; }
+    .contact-inner > p { font-size: 18px; font-weight: 300; line-height: 1.75; color: var(--mist); margin-bottom: 48px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .contact-card { padding: 36px 28px; background: rgba(255,255,255,0.02); border-top: 2px solid transparent; transition: all 0.3s; text-decoration: none; }
+    .contact-card:hover { border-top-color: var(--gold); background: rgba(200,151,62,0.04); }
+    .contact-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .contact-value { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--cream); }
+    .contact-context { font-size: 12px; color: var(--mist); margin-top: 6px; }
+
+    /* ECOSYSTEM */
+    .ecosystem-section { background: var(--forest); padding: 80px 52px; border-top: 1px solid var(--gold-dim); }
+    .ecosystem-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .ecosystem-inner > p { font-size: 14px; font-weight: 300; color: var(--mist); margin-bottom: 32px; }
+    .ecosystem-links { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+    .ecosystem-link { color: var(--cream); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; letter-spacing: 0.04em; padding-bottom: 4px; border-bottom: 1px solid var(--gold-dim); transition: all 0.2s; }
+    .ecosystem-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .ecosystem-link span { color: var(--gold); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--gold-dim); padding: 48px 52px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--cream); letter-spacing: 0.08em; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 12px; color: var(--mist); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links .nav-link { display: none; }
+      .hero { padding: 120px 24px 60px; }
+      .hero-content { grid-template-columns: 1fr; gap: 48px; }
+      .hero-portrait { width: 100%; max-width: 280px; margin: 0 auto; }
+      .about-section { padding: 80px 24px; }
+      .redseal-section { padding: 80px 24px; }
+      .redseal-grid { grid-template-columns: 1fr; gap: 32px; }
+      .experience-section { padding: 80px 24px; }
+      .experience-grid { grid-template-columns: 1fr; }
+      .topics-section { padding: 80px 24px; }
+      .topics-grid { grid-template-columns: 1fr; }
+      .events-section { padding: 80px 24px; }
+      .events-types { grid-template-columns: 1fr; }
+      .collab-section { padding: 80px 24px; }
+      .collab-inner { grid-template-columns: 1fr; gap: 40px; }
+      .media-section { padding: 80px 24px; }
+      .media-grid { grid-template-columns: 1fr; }
+      .book-section { padding: 80px 24px; }
+      .contact-section { padding: 80px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .ecosystem-section { padding: 60px 24px; }
+      .ecosystem-links { gap: 24px; flex-direction: column; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">CHEF MARC<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#topics" class="nav-link">Speaking</a>
+      <a href="#contact" class="nav-cta">Book Marc</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Filipino-Canadian Chef · Toronto</div>
+        <h1>Chef Marc <em>Buenaventura.</em></h1>
+        <div class="hero-roles">Chef · Co-Founder · Speaker</div>
+        <p class="hero-sub">Eight years operating <strong>iSLAS Filipino BBQ & Bar</strong> in Toronto. Co-founder of <strong>Islas Tech</strong>. Available for events, pop-ups, speaking engagements, and culinary collaborations rooted in Filipino heritage and the lived reality of small business operations.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            Book Marc
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#topics" class="btn-text">Speaking topics →</a>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <img src="marc.png" alt="Chef Marc Buenaventura" onerror="this.style.display='none'; this.parentElement.innerHTML+='<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" style=\"position:absolute;inset:0;width:100%;height:100%\"><rect fill=\"%23122e28\" width=\"100\" height=\"100\"/><text x=\"50\" y=\"50\" font-size=\"40\" font-family=\"Cormorant Garamond,serif\" fill=\"%23c8973e\" text-anchor=\"middle\" dominant-baseline=\"central\" font-weight=\"300\">MB</text></svg>'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="section-tag">About</div>
+    <h2>Filipino heritage. <em>Canadian table.</em></h2>
+    <p>Marc Buenaventura is a Filipino-Canadian chef and co-founder based in Toronto. In December 2017, he opened <strong>iSLAS Filipino BBQ & Bar</strong> with his wife Mariel Buenaventura — building it from scratch into a two-location operation with 20+ staff, mid-to-high six-figure annual revenue, and three annual Night Market events with 30–60 vendors.</p>
+    <p>Across eight years, iSLAS survived COVID as a two-person team and earned recognition from <strong>BlogTO, Foodism, Toronto Life, NOW Toronto,</strong> and the <strong>Philippine Consulate in Toronto</strong> during Filipino Restaurant Month 2022 and 2025.</p>
+    <div class="pull-quote">
+      <p>"The first education in flavour wasn't a kitchen. It was my mother calling me over to taste a dish before it left her hands."</p>
+    </div>
+    <p>That intuition — taste, balance, story — runs through every plate Marc has cooked since. In 2025, after pausing iSLAS operations, Marc and Mariel traveled through the Philippines and Japan, reconnecting with the source of the cuisine and rethinking what comes next.</p>
+    <p>Now, Marc is the <strong>co-founder and Operator-in-Residence of Islas Tech</strong> — the back-office operating system Mariel is building for small business operators — while continuing to cook, host, write, and represent Filipino culinary heritage through bespoke events, pop-ups, media work, and a book launching in 2026.</p>
+  </section>
+
+  <!-- RED SEAL -->
+  <section class="redseal-section" id="redseal">
+    <div class="redseal-inner">
+      <div class="redseal-header">
+        <div class="section-tag">Professional Certification</div>
+        <h2>Red Seal Cook — <em>Ontario.</em></h2>
+        <p>Formalizing eight years of professional culinary leadership through Skilled Trades Ontario's Trade Qualifier pathway.</p>
+      </div>
+      <div class="redseal-grid">
+        <div class="redseal-status">
+          <div class="status-badge">
+            <span class="dot"></span>
+            <span>Preparing Application</span>
+          </div>
+          <h3>Application Status</h3>
+          <div class="redseal-status-list">
+            <div class="status-row">
+              <div class="label">Pathway</div>
+              <div class="value">Trade Qualifier (Experienced Worker)</div>
+            </div>
+            <div class="status-row">
+              <div class="label">Trade</div>
+              <div class="value">Cook · Non-Compulsory · Ontario</div>
+            </div>
+            <div class="status-row">
+              <div class="label">Documented Hours</div>
+              <div class="value">6,000+ professional kitchen hours (2017–2025, iSLAS)</div>
+            </div>
+            <div class="status-row">
+              <div class="label">Issuing Body</div>
+              <div class="value">Skilled Trades Ontario · Red Seal Program</div>
+            </div>
+            <div class="status-row">
+              <div class="label">Stage</div>
+              <div class="value">Preparing Trade Equivalency Assessment</div>
+            </div>
+          </div>
+        </div>
+        <div class="redseal-explain">
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--cream); margin-bottom: 16px;">Why Red Seal matters.</h3>
+          <p>The <strong>Red Seal</strong> is Canada's interprovincial standard for skilled trades. For Cook, it formally recognizes 8,000+ documented hours of professional kitchen work and successful completion of an industry-developed exam at 70% pass.</p>
+          <p>Marc is pursuing certification through the <strong>Trade Qualifier pathway</strong> — the route designed for experienced operators who have built their craft on the floor rather than through a formal apprenticeship.</p>
+          <p>The certification will formalize what eight years of operating iSLAS already demonstrated: the discipline, food safety standards, kitchen leadership, and operational rigor required to run a working professional kitchen across two locations.</p>
+          <p>For event organizers, employers, and collaborators, Red Seal Cook status will provide an additional layer of verified professional credibility — alongside the documented record of <strong>BlogTO, Foodism, Toronto Life,</strong> and <strong>Philippine Consulate</strong> recognition.</p>
+          <p style="margin-top: 24px;"><a href="https://www.skilledtradesontario.ca" target="_blank" rel="noopener">Skilled Trades Ontario</a> · <a href="https://www.red-seal.ca/eng/trades/cook.shtml" target="_blank" rel="noopener">Red Seal Cook</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience-section" id="experience">
+    <div class="section-tag">Professional Experience</div>
+    <h2>From the floor <em>to the system.</em></h2>
+    <div class="experience-grid">
+      <div class="exp-card">
+        <div class="exp-period">2017–2025</div>
+        <h3>iSLAS Filipino BBQ & Bar</h3>
+        <div class="exp-role">Co-Founder · Chef</div>
+        <p>Opened in Toronto with Mariel. <strong>Built from zero</strong> — permits, suppliers, staff, POS systems, kitchen operations. Scaled to two locations, 20+ staff, mid-to-high six-figure revenue. Hosted three annual Night Market events with 30–60 vendors. Survived COVID as a two-person team.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-period">2025 → Now</div>
+        <h3>Islas Tech</h3>
+        <div class="exp-role">Co-Founder · Operator-in-Residence</div>
+        <p>Co-founded the back-office operating system for small business operators. Grounds the product in <strong>real operating reality</strong> — ensuring every product decision reflects how a working kitchen, a working floor, and a working SME actually function under pressure.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-period">2025 → Now</div>
+        <h3>Culinary Director</h3>
+        <div class="exp-role">Independent · Events & Storytelling</div>
+        <p>Available for <strong>bespoke private dinners, pop-ups, book-launch collaborations, and culinary education programs</strong> rooted in Filipino heritage and small-operator storytelling. Open to media work, food writing, and select brand partnerships.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING TOPICS -->
+  <section class="topics-section" id="topics">
+    <div class="topics-inner">
+      <div class="topics-intro">
+        <div class="section-tag">Speaking & Engagements</div>
+        <h2>What Marc speaks <em>about.</em></h2>
+        <p>Marc speaks on the themes that emerged from eight years operating iSLAS — culinary heritage, the immigrant operator experience, and the gap between cooking well and running a business well.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-card">
+          <h3>Culinary <em>heritage.</em></h3>
+          <p>Filipino culinary tradition through a Canadian table. The story behind the regional dishes, the techniques, the ingredients. Why representing a cuisine well requires more than a menu — it requires understanding where the flavour comes from and who it serves.</p>
+        </div>
+        <div class="topic-card">
+          <h3>Travel & <em>flavour.</em></h3>
+          <p>The 2025 research journey through the Philippines and Japan. What returning to the source taught a Filipino-Canadian chef about authenticity, evolution, and the discipline of cooking with intention rather than imitation.</p>
+        </div>
+        <div class="topic-card">
+          <h3>Immigrant <em>entrepreneurship.</em></h3>
+          <p>What it actually takes to open and run a small business as a Filipino-Canadian operator. The systems no one teaches you. The networks you build from scratch. The reality of scaling a business while still cooking your own food.</p>
+        </div>
+        <div class="topic-card">
+          <h3>From kitchen <em>to system.</em></h3>
+          <p>Why cooking well is not enough. The operational reality of running a restaurant — permits, suppliers, payroll, POS, customers, staff. How those eight years of friction became the foundation for Islas Tech and the system Marc co-founded.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS & POP-UPS -->
+  <section class="events-section" id="events">
+    <div class="events-inner">
+      <div class="section-tag" style="justify-content: center;">Events & Pop-Ups</div>
+      <h2>Bespoke. <em>Inquiry-based.</em></h2>
+      <p>Marc is available for bespoke private dinners, pop-up collaborations, and book-launch events through 2026 and beyond. <strong>Every engagement is built around the host, the story, and the room</strong> — not a fixed menu or template.</p>
+      <div class="events-types">
+        <div class="event-type">
+          <h4>Private Dinners</h4>
+          <p>Intimate seated dinners (8–30 guests). Designed around the host's narrative — celebration, milestone, gathering, intention.</p>
+        </div>
+        <div class="event-type">
+          <h4>Pop-Up Collaborations</h4>
+          <p>Partner with restaurants, venues, brands, or community organizations on time-bound Filipino-Canadian culinary takeovers.</p>
+        </div>
+        <div class="event-type">
+          <h4>Book Launch Dinners</h4>
+          <p>Themed multi-course experiences tied to the launch of <em>Islas: Stories from the Islands & the Table</em> (2026).</p>
+        </div>
+      </div>
+      <p style="margin-top: 16px;">All inquiries handled directly. Lead time, format, capacity, and pricing are confirmed on a per-event basis.</p>
+      <a href="mailto:marcbuen@islashospitality.com?subject=Event%20Inquiry%20-%20Chef%20Marc" class="btn-primary" style="margin-top: 32px;">
+        Inquire About an Event
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- COLLABORATIONS -->
+  <section class="collab-section" id="collaborations">
+    <div class="collab-inner">
+      <div class="collab-text">
+        <div class="section-tag">Collaborations</div>
+        <h2>Open to <em>the right work.</em></h2>
+        <p>Marc partners with brands, restaurants, community organizations, media outlets, and educators on projects that align with his story — <strong>Filipino-Canadian heritage, the small-operator experience, and the discipline of cooking with intention.</strong></p>
+        <p>Selective rather than scaled. Every collaboration is evaluated for fit, story, and integrity.</p>
+      </div>
+      <div class="collab-list">
+        <div class="collab-item">
+          <h4>Food Media & Writing</h4>
+          <p>Interviews, podcasts, food journalism, contributing writing, recipe development for editorial.</p>
+        </div>
+        <div class="collab-item">
+          <h4>Brand Partnerships</h4>
+          <p>Aligned with Filipino-Canadian cultural identity, small-operator storytelling, or culinary craft.</p>
+        </div>
+        <div class="collab-item">
+          <h4>Community Programs</h4>
+          <p>Cultural events, immigrant entrepreneurship programs, Filipino heritage initiatives.</p>
+        </div>
+        <div class="collab-item">
+          <h4>Culinary Education</h4>
+          <p>High school and college culinary demonstrations, mentorship, workshops. (Previously: Canada Takeout GTA program.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section class="media-section" id="media">
+    <div class="section-tag">Recognition</div>
+    <h2>Featured <em>in.</em></h2>
+    <div class="media-grid">
+      <div class="media-card">
+        <div class="media-source">BlogTO</div>
+        <div class="title">Among Toronto's best Filipino restaurants</div>
+      </div>
+      <div class="media-card">
+        <div class="media-source">Foodism</div>
+        <div class="title">Immigrant founder story — building iSLAS from zero</div>
+      </div>
+      <div class="media-card">
+        <div class="media-source">Toronto Life</div>
+        <div class="title">Among ten of Canada's top chefs — charity dinner</div>
+      </div>
+      <div class="media-card">
+        <div class="media-source">Philippine Consulate</div>
+        <div class="title">Filipino Restaurant Month recognition 2022 & 2025</div>
+      </div>
+      <div class="media-card">
+        <div class="media-source">NOW Toronto</div>
+        <div class="title">"We all unite as one" community dinner feature</div>
+      </div>
+      <div class="media-card">
+        <div class="media-source">Canada Takeout</div>
+        <div class="title">GTA high school culinary demonstrations · 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="book-section" id="book">
+    <div class="book-inner">
+      <div class="section-tag">The Book</div>
+      <h2>Islas: <em>Stories from the Islands & the Table.</em></h2>
+      <p>A culinary memoir by Chef Marc Buenaventura. <strong>Not a cookbook. A founder's journal</strong> — eight years of building iSLAS Filipino BBQ & Bar as a Filipino-Canadian operator. The trial, the systems, the staff, the customers, the recipes that survived two locations and a pandemic.</p>
+      <p>Part memoir, part operator's playbook, part love letter to the cuisine that raised him.</p>
+      <div class="book-meta">
+        <span class="dot"></span>
+        <span>Coming 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="section-tag" style="justify-content: center;">Contact</div>
+      <h2>Get in <em>touch.</em></h2>
+      <p>For events, collaborations, media inquiries, or speaking engagements — please reach out directly. Marc responds personally.</p>
+      <div class="contact-grid">
+        <a href="mailto:marcbuen@islashospitality.com?subject=Professional%20Inquiry" class="contact-card">
+          <div class="contact-label">Professional</div>
+          <div class="contact-value">marcbuen@islashospitality.com</div>
+          <div class="contact-context">Events · Speaking · Collaborations · Media</div>
+        </a>
+        <a href="mailto:marcbuen@gmail.com" class="contact-card">
+          <div class="contact-label">Personal</div>
+          <div class="contact-value">marcbuen@gmail.com</div>
+          <div class="contact-context">Direct personal inquiries</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section class="ecosystem-section">
+    <div class="ecosystem-inner">
+      <p>Connected projects:</p>
+      <div class="ecosystem-links">
+        <a href="https://islastech.tech" class="ecosystem-link">Islas<span>.</span>Tech</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">CHEF MARC<span>.</span></div>
+    <p>© 2026 Marc Buenaventura · Toronto, Canada</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+  </script>
+
+</body>
+</html>
